@@ -1,6 +1,6 @@
 ﻿TDI - Tabbed Document Interface
 
-is the interface popularly known as tabbed browsing.
+Is the interface popularly known as tabbed browsing.
 This pattern allows multiple child windows to be created within the main application screen.
 
 This component was created by me around 2005/2006 to meet needs in the creation of screens more
