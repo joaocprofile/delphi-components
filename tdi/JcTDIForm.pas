@@ -1,9 +1,10 @@
 {******************************************************************************}
 { Jc Components                                                                }
-{ Library created inherited from TCustomPanel VCL                                    }
+{ Library created inherited from TCustomPanel VCL                              }
 {                                                                              }
-{ Copyright(c) 2006 - João Carvalho - joaokvalho@gmail.com                     }
-{                                                                              }
+{ Copyright(c) 2006 - João Carvalho -                                          }
+{ Mail:   joaokvalho@gmail.com                                                 }
+{ GitHub: https://github.com/joaokvalho                                        }
 {                                                                              }
 { Apache License                                                               }
 { Version 2.0, January 2004                                                    }
