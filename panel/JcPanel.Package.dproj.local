@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2019/02/13 09:14:28.000.281,=rtl.dcp</Transaction>
+    <Transaction>2019/02/13 09:15:18.000.367,C:\Users\root\Documents\Embarcadero\Studio\Projects\Package1.dproj=D:\delphi-components\panel\JcPanel.Package.dproj</Transaction>
+    <Transaction>2019/02/13 09:15:38.000.282,=D:\delphi-components\panel\JcPanel.pas</Transaction>
+    <Transaction>2019/02/13 09:16:32.000.850,=vcl.dcp</Transaction>
+  </Transactions>
+</BorlandProject>
