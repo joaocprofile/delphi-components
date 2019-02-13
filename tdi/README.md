@@ -8,3 +8,9 @@ organized for the ERP SIGData.
 
 At the time hardly anyone used this methodology, I believe only Firefox browsers and was when Microsoft
 was inspired to adopt the same technique in Internet Explorer 7 as well.
+
+
+How to install:
+
+Compile and install the package: JcTDIForm.Package.dpk
+Add the JcTDIForm.pas file in the Library path

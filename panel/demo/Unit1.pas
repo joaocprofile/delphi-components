@@ -8,9 +8,9 @@ uses
 
 type
   TForm2 = class(TForm)
-    JcPanel1: TJcPanel;
     JcPanel2: TJcPanel;
     JcPanel3: TJcPanel;
+    JcPanel1: TJcPanel;
   private
     { Private declarations }
   public
