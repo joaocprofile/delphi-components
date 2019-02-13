@@ -1,6 +1,6 @@
 {******************************************************************************}
 { Jc Components                                                                }
-{ Library created inherited from TCustomPanel VCL                                    }
+{ Library created inherited from TPanel VCL                                    }
 {                                                                              }
 { Copyright(c) 2006 - João Carvalho - joaokvalho@gmail.com                     }
 {                                                                              }
@@ -14,7 +14,7 @@
 {******************************************************************************
 |* Historic
 |*
-|* 07/06/2006:  João Carvalho
+|* 09/06/2006:  João Carvalho
 |* - First Version: Creation and Distribution of the First Version
 ******************************************************************************}
 
