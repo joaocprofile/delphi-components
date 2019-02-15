@@ -1,4 +1,4 @@
-﻿TDI - Tabbed Document Interface
+# TDI - Tabbed Document Interface
 
 Is the interface popularly known as tabbed browsing.
 This pattern allows multiple child windows to be created within the main application screen.
