@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{E1E022C7-4A9E-426D-B294-46E2C0F316CA}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="button\JcButton.Package.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="panel\JcPanel.Package.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="tdi\JcTDIForm.Package.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="JcButton_Package">
+        <MSBuild Projects="button\JcButton.Package.dproj"/>
+    </Target>
+    <Target Name="JcButton_Package:Clean">
+        <MSBuild Projects="button\JcButton.Package.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="JcButton_Package:Make">
+        <MSBuild Projects="button\JcButton.Package.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="JcPanel_Package">
+        <MSBuild Projects="panel\JcPanel.Package.dproj"/>
+    </Target>
+    <Target Name="JcPanel_Package:Clean">
+        <MSBuild Projects="panel\JcPanel.Package.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="JcPanel_Package:Make">
+        <MSBuild Projects="panel\JcPanel.Package.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="JcTDIForm_Package">
+        <MSBuild Projects="tdi\JcTDIForm.Package.dproj"/>
+    </Target>
+    <Target Name="JcTDIForm_Package:Clean">
+        <MSBuild Projects="tdi\JcTDIForm.Package.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="JcTDIForm_Package:Make">
+        <MSBuild Projects="tdi\JcTDIForm.Package.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="JcButton_Package;JcPanel_Package;JcTDIForm_Package"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="JcButton_Package:Clean;JcPanel_Package:Clean;JcTDIForm_Package:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="JcButton_Package:Make;JcPanel_Package:Make;JcTDIForm_Package:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
