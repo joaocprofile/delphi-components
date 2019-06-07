@@ -3,7 +3,6 @@
 { Library created inherited from TCustomPanel VCL                              }
 {                                                                              }
 { Copyright(c) 2006 - João Carvalho -                                          }
-{ Mail:   joaokvalho@gmail.com                                                 }
 { GitHub: https://github.com/joaokvalho                                        }
 {                                                                              }
 {******************************************************************************
