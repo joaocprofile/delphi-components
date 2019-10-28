@@ -1,3 +1,17 @@
+{******************************************************************************}
+{ Jc Components                                                                }
+{ Library created inherited from TCustomControl VCL                                    }
+{                                                                              }
+{ Copyright(c) 2019 - João Carvalho -                                          }
+{ GitHub: https://github.com/joaokvalho                                        }
+{                                                                              }
+{******************************************************************************
+|* Historic
+|*
+|* 15/10/2019:  João Carvalho
+|* - First Version: Creation and Distribution of the First Version
+******************************************************************************}
+
 unit JcDBGrid;
 
 interface

@@ -1,4 +1,4 @@
-package JcDBGrid.Package;
+package jcComponents;
 
 {$R *.res}
 {$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
@@ -25,17 +25,20 @@ package JcDBGrid.Package;
 {$IMAGEBASE $400000}
 {$DEFINE DEBUG}
 {$ENDIF IMPLICITBUILDING}
-{$DESCRIPTION 'Jc DBGrid'}
+{$DESCRIPTION 'Jc Components'}
 {$IMPLICITBUILD ON}
 
 requires
-  vcl,
   rtl,
+  vcl,
   dbrtl,
   vcldb,
   dsnap;
 
 contains
-  JcDBGrid in 'JcDBGrid.pas';
+  JcButton in 'source\JcButton.pas',
+  JcDBGrid in 'source\JcDBGrid.pas',
+  JcPanel in 'source\JcPanel.pas',
+  JcTDIForm in 'source\JcTDIForm.pas';
 
 end.
