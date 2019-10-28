@@ -39,6 +39,10 @@ contains
   JcButton in 'source\JcButton.pas',
   JcDBGrid in 'source\JcDBGrid.pas',
   JcPanel in 'source\JcPanel.pas',
-  JcTDIForm in 'source\JcTDIForm.pas';
+  JcTDIForm in 'source\JcTDIForm.pas',
+  JcDateEdit in 'source\JcDateEdit.pas' {SFormDateEdit},
+  JcDBDateEdit in 'source\JcDBDateEdit.pas' {SFormDBDateEdit},
+  JcEditValue in 'source\JcEditValue.pas',
+  JcDBEdit in 'source\JcDBEdit.pas';
 
 end.
