@@ -19,7 +19,11 @@ interface
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   Datasnap.DBClient, Menus, Vcl.DBGrids, DB, StdCtrls, Vcl.Grids,
-  System.UITypes;
+  System.UITypes,
+
+  // TODO: remover este acoplamento do FIREDAC
+  // usado somente para ordenar as colunas ao clicar
+  FireDAC.Stan.Intf, FireDAC.Comp.Client;
 
 type
   TjSortType = (stNone, stAscending, stDescending);
@@ -37,6 +41,7 @@ type
     procedure WMVScroll(var Message: TWMVScroll); message WM_VSCROLL;
     procedure SetSortType(const Value: TjSortType);
     procedure SetSortColumn(const Value: String);
+    procedure SortGrid(Column: TColumn);
   protected
     procedure TitleClick(Column: TColumn); override;
 
@@ -82,37 +87,46 @@ begin
    // TODO
 end;
 
-procedure SortGrid(Column: TColumn);
+procedure TJcDBGrid.SortGrid(Column: TColumn);
 var
- sIndexName: string;
- iOrder: TIndexOptions;
+  sIndexName: string;
+  oSort: TFDSortOption;
+  I: smallint;
 begin
-  if TClientDataSet(Column.Field.DataSet).IndexName = Column.FieldName + '_ASC' then
+  for I := 0 to Self.Columns.Count - 1 do
+    Self.Columns[I].Title.Font.Style := [];
+
+  if TFDQuery(Self.DataSource.DataSet).IndexName = Column.FieldName + '_ASC' then
   begin
     sIndexName := Column.FieldName + '_DESC';
-    iOrder := [ixDescending];
+    oSort := soDescending;
   end
   else
   begin
     sIndexName := Column.FieldName + '_ASC';
-    iOrder := [];
+    oSort := soNoCase;
   end;
 
-  if TClientDataSet(Column.Field.DataSet).IndexDefs.IndexOf(sIndexName) < 0 then
-    TClientDataSet(Column.Field.DataSet).AddIndex(sIndexName, Column.FieldName, iOrder);
+  if not Assigned(TFDQuery(Self.DataSource.DataSet).Indexes.FindIndex(sIndexName)) then
+    TFDQuery(Self.DataSource.DataSet).AddIndex(sIndexName, Column.FieldName, EmptyStr, [oSort]);
 
   Column.Title.Font.Style := [fsBold];
-  TClientDataSet(Column.Field.DataSet).IndexName := sIndexName;
-  Column.Field.DataSet.First;
+  TFDQuery(Self.DataSource.DataSet).IndexName := sIndexName;
+  TFDQuery(Self.DataSource.DataSet).First;
 end;
 
 constructor TJcDBGrid.Create(AOwner: TComponent);
 begin
   inherited;
-  DrawingStyle := gdsThemed;
-  FixedColor := $00EFF7F8;
-  GradientEndColor := $00D6D6D6;
-  GradientStartColor := clWhite;
+  Color          := clWhite;
+  ColorFirst     := $00F4C18E;
+  ColorFirstFont := clBlack;
+  ColorSecond    := clWhite;
+
+  DrawingStyle := gdsGradient;
+  FixedColor   := $00FCD39C;
+  GradientStartColor := $00FCD39C;
+  GradientEndColor   := $00FDE1BB;
 end;
 
 destructor TJcDBGrid.Destroy;
@@ -158,6 +172,8 @@ end;
 procedure TJcDBGrid.TitleClick(Column: TColumn);
 begin
   inherited;
+  if Column.Field = nil then
+    exit;
 
   ClearSort;
   SortGrid(Column);

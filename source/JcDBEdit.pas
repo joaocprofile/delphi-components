@@ -21,7 +21,7 @@ uses
   Forms, Windows, Messages, DB, JcCustomClass;
 
 type
-  TSDDBEdit = class(TDBEdit)
+  TJcDBEdit = class(TDBEdit)
   private
     FColorOnFocus    : TColor;
     FColorOnNotFocus : TColor;
@@ -71,29 +71,29 @@ implementation
 
 procedure Register;
 begin
-  RegisterComponents('Jc Components', [TSDDBEdit]);
+  RegisterComponents('Jc Components', [TJcDBEdit]);
 end;
 
-procedure TSDDBEdit.CMMouseEnter(var Message: TMessage);
+procedure TJcDBEdit.CMMouseEnter(var Message: TMessage);
 begin
   inherited;
   Invalidate;
 end;
 
-procedure TSDDBEdit.CMMouseLeave(var Message: TMessage);
+procedure TJcDBEdit.CMMouseLeave(var Message: TMessage);
 begin
   inherited;
   Invalidate;
 end;
 
-procedure TSDDBEdit.CNCommand(var Message: TWMCommand);
+procedure TJcDBEdit.CNCommand(var Message: TWMCommand);
 begin
   inherited;
   if (Message.NotifyCode = CBN_CLOSEUP) then
     Invalidate;
 end;
 
-constructor TSDDBEdit.Create(AOwner: TComponent);
+constructor TJcDBEdit.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
   FBorders := TEditBorders.Create(Self);
@@ -109,41 +109,41 @@ begin
   ControlStyle := ControlStyle - [csSetCaption];
 end;
 
-procedure TSDDBEdit.CreateParams(var Params: TCreateParams);
+procedure TJcDBEdit.CreateParams(var Params: TCreateParams);
 begin
   inherited CreateParams(Params);
   Params.Style := Params.Style or ES_AUTOHSCROLL or ES_MULTILINE or
     WS_CLIPCHILDREN;
 end;
 
-procedure TSDDBEdit.CreateWnd;
+procedure TJcDBEdit.CreateWnd;
 begin
   inherited CreateWnd;
   setEditRect;
 end;
 
-destructor TSDDBEdit.Destroy;
+destructor TJcDBEdit.Destroy;
 begin
   FCanvas.Free;
   FBorders.Free;
   inherited Destroy;
 end;
 
-procedure TSDDBEdit.DoEnter;
+procedure TJcDBEdit.DoEnter;
 begin
   inherited;
   if Tag >= 0 then
     Color := ColorOnFocus;
 end;
 
-procedure TSDDBEdit.DoExit;
+procedure TJcDBEdit.DoExit;
 begin
   inherited;
   if Tag >= 0 then
     Color := ColorOnNotFocus;
 end;
 
-procedure TSDDBEdit.Paint;
+procedure TJcDBEdit.Paint;
 
   procedure DrawBorders;
   var
@@ -207,12 +207,12 @@ begin
     DrawBorders;
 end;
 
-procedure TSDDBEdit.setBorders(const Value: TEditBorders);
+procedure TJcDBEdit.setBorders(const Value: TEditBorders);
 begin
   FBorders.Assign(Value);
 end;
 
-procedure TSDDBEdit.setBorderStyle(const Value: TEditBorderStyle);
+procedure TJcDBEdit.setBorderStyle(const Value: TEditBorderStyle);
 begin
   if Value <> FBorderStyle then
   begin
@@ -225,7 +225,7 @@ begin
   end;
 end;
 
-procedure TSDDBEdit.setEditRect;
+procedure TJcDBEdit.setEditRect;
 var
   EditRec: TRect;
 begin
@@ -243,33 +243,33 @@ begin
   end;
 end;
 
-procedure TSDDBEdit.SetRequired(const Value: Boolean);
+procedure TJcDBEdit.SetRequired(const Value: Boolean);
 begin
   FRequired := Value;
   if FRequired then
     FWarning := False;
 end;
 
-procedure TSDDBEdit.SetWarning(const Value: Boolean);
+procedure TJcDBEdit.SetWarning(const Value: Boolean);
 begin
   FWarning := Value;
   if FWarning then
     FRequired := False;
 end;
 
-procedure TSDDBEdit.WMKillFocus(var Message: TWMKillFocus);
+procedure TJcDBEdit.WMKillFocus(var Message: TWMKillFocus);
 begin
   inherited;
   Invalidate;
 end;
 
-procedure TSDDBEdit.WMLButtonUp(var Message: TWMLButtonUp);
+procedure TJcDBEdit.WMLButtonUp(var Message: TWMLButtonUp);
 begin
   inherited;
   Invalidate;
 end;
 
-procedure TSDDBEdit.WMPaint(var Message: TWMPaint);
+procedure TJcDBEdit.WMPaint(var Message: TWMPaint);
 begin
   inherited;
   Paint;
@@ -277,14 +277,14 @@ begin
   Message.Result := 0;
 end;
 
-procedure TSDDBEdit.WMSetFocus(var Message: TWMSetFocus);
+procedure TJcDBEdit.WMSetFocus(var Message: TWMSetFocus);
 begin
   inherited;
   Invalidate;
   SelectAll;
 end;
 
-procedure TSDDBEdit.WMSize(var Message: TWMSize);
+procedure TJcDBEdit.WMSize(var Message: TWMSize);
 begin
   inherited;
   Invalidate;

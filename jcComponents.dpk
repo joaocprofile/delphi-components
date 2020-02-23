@@ -33,7 +33,11 @@ requires
   vcl,
   dbrtl,
   vcldb,
-  dsnap;
+  dsnap,
+  vclie,
+  FireDACCommon,
+  FireDACCommonDriver,
+  FireDAC;
 
 contains
   JcButton in 'source\JcButton.pas',
@@ -43,6 +47,9 @@ contains
   JcDateEdit in 'source\JcDateEdit.pas' {SFormDateEdit},
   JcDBDateEdit in 'source\JcDBDateEdit.pas' {SFormDBDateEdit},
   JcEditValue in 'source\JcEditValue.pas',
-  JcDBEdit in 'source\JcDBEdit.pas';
+  JcDBEdit in 'source\JcDBEdit.pas',
+  JcPageControl in 'source\JcPageControl.pas',
+  JcPDVBobina in 'source\JcPDVBobina.pas';
 
 end.
+

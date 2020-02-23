@@ -132,8 +132,8 @@ end;
 constructor TJcGradientParams.Create(AOwner: TJcPanel);
 begin
   FOwner := AOwner;
-  FFadeColor := clWindow;
-  FEnabled := true;
+  FFadeColor := $00FDE1BB;
+  FEnabled   := true;
   FDirection := dgRadial;
 end;
 
@@ -172,8 +172,8 @@ begin
   BevelOuter := bvNone;
   SetBorderWidth(1);
   FBevelWidth := 1;
-  FBevelColor := $00C39D75;
-  Color := $00CD9E24;
+  FBevelColor := $00FCD39C;
+  Color := $00FCD39C;
   FullRepaint := False;
   FGradient := TJcGradientParams.Create(Self);
 end;
