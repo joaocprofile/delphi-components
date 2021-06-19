@@ -17,59 +17,24 @@ object fDicasDBGrid: TfDicasDBGrid
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object JcDBGrid1: TJcDBGrid
-    Left = 0
-    Top = 0
-    Width = 531
-    Height = 366
-    Align = alClient
-    DataSource = DataSource
-    FixedColor = clGray
-    TabOrder = 0
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'Tahoma'
-    TitleFont.Style = []
-    ColorFirst = 16759225
-    ColorFirstFont = clBlack
-    ColorSecond = clWhite
-    Columns = <
-      item
-        Expanded = False
-        FieldName = 'Codigo'
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'Nome'
-        Width = 429
-        Visible = True
-      end>
-  end
-  object ClientDataSet: TClientDataSet
-    Aggregates = <>
-    Params = <>
-    Left = 96
-    Top = 112
-    object ClientDataSetCodigo: TIntegerField
-      FieldName = 'Codigo'
-    end
-    object ClientDataSetNome: TStringField
-      FieldName = 'Nome'
-      Size = 100
-    end
-    object ClientDataSetAtivo: TStringField
-      FieldName = 'Ativo'
-    end
-    object ClientDataSetCidade: TStringField
-      FieldName = 'Cidade'
-      Size = 50
-    end
-  end
   object DataSource: TDataSource
-    DataSet = ClientDataSet
-    Left = 168
-    Top = 112
+    DataSet = FDMemTable
+    Left = 160
+    Top = 16
+  end
+  object FDMemTable: TFDMemTable
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    Left = 312
+    Top = 16
+  end
+  object FDStanStorageXMLLink1: TFDStanStorageXMLLink
+    Left = 232
+    Top = 56
   end
 end

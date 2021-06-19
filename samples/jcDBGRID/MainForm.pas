@@ -6,17 +6,16 @@ interface
 
 uses
   Winapi.Windows, vcl.forms, Winapi.Messages, System.SysUtils, Data.DB, Datasnap.DBClient,
-  System.Classes, Vcl.Controls, Vcl.Grids, Vcl.DBGrids, JcDBGrid;
+  System.Classes, Vcl.Controls, Vcl.Grids, Vcl.DBGrids, JcDBGrid,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, FireDAC.Stan.StorageXML;
 
 type
   TfDicasDBGrid = class(TForm)
-    ClientDataSet: TClientDataSet;
-    ClientDataSetCodigo: TIntegerField;
-    ClientDataSetNome: TStringField;
-    ClientDataSetAtivo: TStringField;
     DataSource: TDataSource;
-    ClientDataSetCidade: TStringField;
-    JcDBGrid1: TJcDBGrid;
+    FDMemTable: TFDMemTable;
+    FDStanStorageXMLLink1: TFDStanStorageXMLLink;
     procedure FormCreate(Sender: TObject);
   end;
 
@@ -31,8 +30,8 @@ procedure TfDicasDBGrid.FormCreate(Sender: TObject);
 var
   nIndiceColunaCidade: smallint;
 begin
-  ClientDataSet.LoadFromFile(ExtractFilePath(Application.ExeName) + 'data.xml');
-  ClientDataSet.First;
+  FDMemTable.LoadFromFile(ExtractFilePath(Application.ExeName) + 'data.xml');
+  FDMemTable.First;
 end;
 
 end.

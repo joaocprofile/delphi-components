@@ -81,7 +81,6 @@ object SFormDateEdit: TSFormDateEdit
       OnDblClick = StrGridDblClick
       OnDrawCell = StrGridDrawCell
       OnKeyPress = StrGridKeyPress
-      ExplicitTop = 24
       ColWidths = (
         25
         25

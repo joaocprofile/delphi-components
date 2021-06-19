@@ -41,7 +41,6 @@ requires
 
 contains
   JcButton in 'source\JcButton.pas',
-  JcDBGrid in 'source\JcDBGrid.pas',
   JcPanel in 'source\JcPanel.pas',
   JcTDIForm in 'source\JcTDIForm.pas',
   JcDateEdit in 'source\JcDateEdit.pas' {SFormDateEdit},
@@ -49,7 +48,12 @@ contains
   JcEditValue in 'source\JcEditValue.pas',
   JcDBEdit in 'source\JcDBEdit.pas',
   JcPageControl in 'source\JcPageControl.pas',
-  JcPDVBobina in 'source\JcPDVBobina.pas';
+  JcPDVBobina in 'source\JcPDVBobina.pas',
+  JcComboBox in 'source\JcComboBox.pas',
+  JcDBComboBox in 'source\JcDBComboBox.pas',
+  JcHint in 'source\JcHint.pas',
+  JcProgressBar in 'source\JcProgressBar.pas',
+  JcDBGrid in 'source\JcDBGrid.pas';
 
 end.
 

@@ -2,7 +2,7 @@
     <PropertyGroup>
         <ProjectGuid>{F6AAA104-D9DA-44EF-BEAB-2C1624D9D865}</ProjectGuid>
         <MainSource>jcComponents.dpk</MainSource>
-        <ProjectVersion>18.7</ProjectVersion>
+        <ProjectVersion>18.8</ProjectVersion>
         <FrameworkType>VCL</FrameworkType>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
@@ -15,11 +15,6 @@
     </PropertyGroup>
     <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Base)'=='true') or '$(Base_Win32)'!=''">
         <Base_Win32>true</Base_Win32>
-        <CfgParent>Base</CfgParent>
-        <Base>true</Base>
-    </PropertyGroup>
-    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Base)'=='true') or '$(Base_Win64)'!=''">
-        <Base_Win64>true</Base_Win64>
         <CfgParent>Base</CfgParent>
         <Base>true</Base>
     </PropertyGroup>
@@ -61,9 +56,6 @@
         <VerInfo_Locale>1033</VerInfo_Locale>
         <DCC_UsePackage>vcl;rtl;dbrtl;vcldb;dsnap;vclie;FireDACCommon;FireDACCommonDriver;FireDAC;$(DCC_UsePackage)</DCC_UsePackage>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(Base_Win64)'!=''">
-        <DCC_UsePackage>vcl;rtl;dbrtl;vcldb;dsnap;vclie;FireDACCommon;FireDACCommonDriver;FireDAC;$(DCC_UsePackage)</DCC_UsePackage>
-    </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
         <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
         <DCC_DebugDCUs>true</DCC_DebugDCUs>
@@ -98,7 +90,6 @@
         <DCCReference Include="FireDACCommonDriver.dcp"/>
         <DCCReference Include="FireDAC.dcp"/>
         <DCCReference Include="source\JcButton.pas"/>
-        <DCCReference Include="source\JcDBGrid.pas"/>
         <DCCReference Include="source\JcPanel.pas"/>
         <DCCReference Include="source\JcTDIForm.pas"/>
         <DCCReference Include="source\JcDateEdit.pas">
@@ -113,6 +104,11 @@
         <DCCReference Include="source\JcDBEdit.pas"/>
         <DCCReference Include="source\JcPageControl.pas"/>
         <DCCReference Include="source\JcPDVBobina.pas"/>
+        <DCCReference Include="source\JcComboBox.pas"/>
+        <DCCReference Include="source\JcDBComboBox.pas"/>
+        <DCCReference Include="source\JcHint.pas"/>
+        <DCCReference Include="source\JcProgressBar.pas"/>
+        <DCCReference Include="source\JcDBGrid.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -139,8 +135,9 @@
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">
-                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libcgunwind.1.0.dylib" Class="DependencyModule">
-                    <Platform Name="iOSSimulator">
+                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\15.0\Bpl\jcComponents.bpl" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>jcComponents.bpl</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -149,7 +146,7 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\20.0\Bpl\jcComponents.bpl" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="..\..\..\Public\Documents\Embarcadero\Studio\20.0\Bpl\jcComponents.bpl" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>jcComponents.bpl</RemoteName>
                         <Overwrite>true</Overwrite>
@@ -160,9 +157,8 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\15.0\Bpl\jcComponents.bpl" Configuration="Debug" Class="ProjectOutput">
-                    <Platform Name="Win32">
-                        <RemoteName>jcComponents.bpl</RemoteName>
+                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libcgunwind.1.0.dylib" Class="DependencyModule">
+                    <Platform Name="iOSSimulator">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -182,36 +178,43 @@
                         <Extensions>.dll;.bpl</Extensions>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="iPhone_Launch2208">
-                    <Platform Name="iOSDevice32">
+                <DeployClass Required="true" Name="ProjectOutput">
+                    <Platform Name="iOSDevice">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                    </Platform>
+                    <Platform Name="OSX32">
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="iOSSimulator">
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="iOSDevice64">
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="iPhone_Launch1125">
-                    <Platform Name="iOSDevice32">
-                        <Operation>1</Operation>
-                    </Platform>
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="iPad_Launch1024x768">
-                    <Platform Name="iOSDevice32">
-                        <Operation>1</Operation>
-                    </Platform>
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -221,14 +224,20 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="iPhone_Launch1792">
-                    <Platform Name="iOSDevice32">
+                <DeployClass Name="AndroidLibnativeX86File">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\x86</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
+                </DeployClass>
+                <DeployClass Name="iPhone_Launch1792">
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -237,12 +246,6 @@
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="iOSSimulator">
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
-                <DeployClass Name="AndroidLibnativeX86File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\x86</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -265,6 +268,10 @@
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="Android_NotificationIcon48">
+                    <Platform Name="Android64">
+                        <RemoteDir>res\drawable-xhdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
                     <Platform Name="Android">
                         <RemoteDir>res\drawable-xhdpi</RemoteDir>
                         <Operation>1</Operation>
@@ -279,24 +286,24 @@
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="iPad_Launch1536x2048">
-                    <Platform Name="iOSDevice32">
-                        <Operation>1</Operation>
-                    </Platform>
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="iPhone_Launch1242">
-                    <Platform Name="iOSDevice32">
-                        <Operation>1</Operation>
-                    </Platform>
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -363,24 +370,32 @@
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="iPad_Launch2224">
-                    <Platform Name="iOSDevice32">
-                        <Operation>1</Operation>
-                    </Platform>
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="iOSDevice64">
                         <Operation>1</Operation>
                     </Platform>
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
                 </DeployClass>
                 <DeployClass Name="ProjectiOSInfoPList"/>
                 <DeployClass Name="Android_Strings">
+                    <Platform Name="Android64">
+                        <RemoteDir>res\values</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
                     <Platform Name="Android">
                         <RemoteDir>res\values</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="AndroidServiceOutput">
+                    <Platform Name="Android64">
+                        <RemoteDir>library\lib\arm64-v8a</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
                     <Platform Name="Android">
                         <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
                         <Operation>1</Operation>
@@ -393,19 +408,23 @@
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="Android_NotificationIcon96">
+                    <Platform Name="Android64">
+                        <RemoteDir>res\drawable-xxxhdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
                     <Platform Name="Android">
                         <RemoteDir>res\drawable-xxxhdpi</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="iPhone_Launch1136x640">
-                    <Platform Name="iOSDevice32">
-                        <Operation>1</Operation>
-                    </Platform>
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -417,13 +436,13 @@
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="iPhone_Launch2436">
-                    <Platform Name="iOSDevice32">
-                        <Operation>1</Operation>
-                    </Platform>
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -446,13 +465,13 @@
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="iPad_Launch2048x2732">
-                    <Platform Name="iOSDevice32">
-                        <Operation>1</Operation>
-                    </Platform>
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -477,13 +496,13 @@
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="iPhone_Launch828">
-                    <Platform Name="iOSDevice32">
-                        <Operation>1</Operation>
-                    </Platform>
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -496,12 +515,20 @@
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="Android_NotificationIcon36">
+                    <Platform Name="Android64">
+                        <RemoteDir>res\drawable-hdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
                     <Platform Name="Android">
                         <RemoteDir>res\drawable-hdpi</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="Android_NotificationIcon24">
+                    <Platform Name="Android64">
+                        <RemoteDir>res\drawable-mdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
                     <Platform Name="Android">
                         <RemoteDir>res\drawable-mdpi</RemoteDir>
                         <Operation>1</Operation>
@@ -525,13 +552,6 @@
                         <Extensions>.dylib</Extensions>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="ProjectOSXInfoPList"/>
-                <DeployClass Name="ProjectiOSDeviceDebug">
-                    <Platform Name="iOSDevice">
-                        <RemoteDir>..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
                 <DeployClass Name="iPad_Launch2048">
                     <Platform Name="iOSDevice">
                         <Operation>1</Operation>
@@ -540,6 +560,13 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
+                <DeployClass Name="ProjectiOSDeviceDebug">
+                    <Platform Name="iOSDevice">
+                        <RemoteDir>..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectOSXInfoPList"/>
                 <DeployClass Name="AndroidGDBServer">
                     <Platform Name="Android">
                         <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
@@ -547,31 +574,35 @@
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="iPhone_Launch2688x1242">
-                    <Platform Name="iOSDevice32">
-                        <Operation>1</Operation>
-                    </Platform>
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="iOSDevice64">
                         <Operation>1</Operation>
                     </Platform>
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
                 </DeployClass>
                 <DeployClass Name="ProjectOSXEntitlements"/>
                 <DeployClass Name="Android_Colors">
+                    <Platform Name="Android64">
+                        <RemoteDir>res\values</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
                     <Platform Name="Android">
                         <RemoteDir>res\values</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="iPad_Launch768x1024">
-                    <Platform Name="iOSDevice32">
-                        <Operation>1</Operation>
-                    </Platform>
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -589,20 +620,36 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
+                <DeployClass Name="ProjectOutput_Android32">
+                    <Platform Name="Android64">
+                        <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
                 <DeployClass Name="AndroidSplashStylesV21">
+                    <Platform Name="Android64">
+                        <RemoteDir>res\values-v21</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
                     <Platform Name="Android">
                         <RemoteDir>res\values-v21</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="iPad_Launch1668">
-                    <Platform Name="iOSDevice32">
+                <DeployClass Name="AndroidServiceOutput_Android32">
+                    <Platform Name="Android64">
+                        <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
+                </DeployClass>
+                <DeployClass Name="iPad_Launch1668">
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -614,26 +661,14 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="iPad_Launch768">
-                    <Platform Name="iOSDevice">
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="iOSSimulator">
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
-                <DeployClass Required="true" Name="ProjectOutput">
-                    <Platform Name="iOSDevice">
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="Android">
+                <DeployClass Name="AndroidLibnativeArmeabiv7aFile">
+                    <Platform Name="Android64">
                         <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
-                    <Platform Name="Win32">
-                        <Operation>0</Operation>
-                    </Platform>
-                    <Platform Name="OSX32">
+                </DeployClass>
+                <DeployClass Name="iPad_Launch768">
+                    <Platform Name="iOSDevice">
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="iOSSimulator">
@@ -647,24 +682,35 @@
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="iPhone_Launch1242x2688">
-                    <Platform Name="iOSDevice32">
-                        <Operation>1</Operation>
-                    </Platform>
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="iPad_Launch1668x2388">
-                    <Platform Name="iOSDevice32">
-                        <Operation>1</Operation>
-                    </Platform>
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPad_Launch2732x2048">
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -675,35 +721,24 @@
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="iPad_Launch2048x1536">
-                    <Platform Name="iOSDevice32">
-                        <Operation>1</Operation>
-                    </Platform>
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="iPad_Launch2388x1668">
-                    <Platform Name="iOSDevice32">
-                        <Operation>1</Operation>
-                    </Platform>
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="iOSDevice64">
                         <Operation>1</Operation>
                     </Platform>
-                </DeployClass>
-                <DeployClass Name="iPad_Launch2732x2048">
                     <Platform Name="iOSDevice32">
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="iOSSimulator">
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="iOSDevice64">
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -714,6 +749,10 @@
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="AndroidFileProvider">
+                    <Platform Name="Android64">
+                        <RemoteDir>res\xml</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
                     <Platform Name="Android">
                         <RemoteDir>res\xml</RemoteDir>
                         <Operation>1</Operation>
@@ -728,13 +767,13 @@
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="iPhone_Launch750">
-                    <Platform Name="iOSDevice32">
-                        <Operation>1</Operation>
-                    </Platform>
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -745,17 +784,21 @@
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="iPhone_Launch1334">
-                    <Platform Name="iOSDevice32">
-                        <Operation>1</Operation>
-                    </Platform>
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="iOSDevice64">
                         <Operation>1</Operation>
                     </Platform>
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
                 </DeployClass>
                 <DeployClass Name="Android_NotificationIcon72">
+                    <Platform Name="Android64">
+                        <RemoteDir>res\drawable-xxhdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
                     <Platform Name="Android">
                         <RemoteDir>res\drawable-xxhdpi</RemoteDir>
                         <Operation>1</Operation>
@@ -766,20 +809,31 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>
-                <ProjectRoot Platform="Android" Name="$(PROJECTNAME)"/>
+                <DeployClass Name="iPhone_Launch2208">
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="iOSDevice" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="Android" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="Win32" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="OSX64" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="Android64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Linux64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
-                <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="OSX32" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>
             </Deployment>
             <Platforms>
                 <Platform value="Win32">True</Platform>
-                <Platform value="Win64">False</Platform>
             </Platforms>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>
